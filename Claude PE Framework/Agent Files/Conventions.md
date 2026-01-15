@@ -130,7 +130,7 @@ Periodically consolidate accumulated lesson cards into Best_Practices.md. Run wh
 
 ### Quality Check
 
-After synthesis, Best_Practices.md should:
+After synthesis, Domain_Knowledge.md should:
 - Have no redundant case studies (each teaches something distinct)
 - Have clear cross-references between related entries
 - Read as a coherent document, not a pile of fragments
