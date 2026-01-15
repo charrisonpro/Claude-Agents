@@ -113,6 +113,41 @@ The PE Framework uses support files in the `Agent Files/` directory. Each has a 
 **Update:** Every time any PE Framework file changes
 **Note:** Target projects maintain their own separate version histories
 
+### PM_Queue.md — Task Queue for PM Helper
+- Async task queue processed by the PM Helper agent (Haiku)
+- Other agents write here; PM Helper reads and processes during downtime
+
+**Write to when:** Non-critical tasks arise (logging, convention checks, heavy ops)
+**Don't use for:** Anything blocking current work
+
+---
+
+## PM Queue Protocol
+
+Defer non-critical work to the PM Helper to save tokens. The PM runs on Haiku during downtime.
+
+### Queue These
+- Open questions (not blocking)
+- Decisions worth logging
+- Convention checks on finished artifacts
+- Version history drafts
+- Heavy ops a human could do faster
+
+### Format
+Add to `Agent Files/PM_Queue.md`:
+```
+- [ ] TASK_TYPE: Description
+```
+
+Types: `TRACK_QUESTION`, `TRACK_ACTION`, `LOG_DECISION`, `CHECK_CONVENTIONS`, `DRAFT_VERSION_ENTRY`, `FLAG_HEAVY_OP`, `STATUS_REQUEST`
+
+### Heavy Op Check
+Before proposing folder restructures, large rewrites, or boilerplate generation:
+
+> Could a human do this in fewer keystrokes than tokens I'd spend?
+
+If yes: `- [ ] FLAG_HEAVY_OP: [operation] → Alt: [manual action]`
+
 ---
 
 ## Quick Reference: Key Principles
