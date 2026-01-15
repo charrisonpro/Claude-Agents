@@ -1,0 +1,7 @@
+# PM Helper Configuration
+# Runs on Haiku for token economy
+
+model = "claude-haiku-4-20250514"
+
+# API key can be set here or via ANTHROPIC_API_KEY env var
+# api_key = "sk-ant-..."

@@ -121,3 +121,39 @@ Observed patterns from testing. Each documents a specific failure or success and
 - **Liu et al. (2023), "Lost in the Middle: How Language Models Use Long Contexts"** — LLMs retrieve information less reliably from the middle of long contexts. [https://arxiv.org/abs/2307.03172](https://arxiv.org/abs/2307.03172)
 
 - **Murdock (1962), "The serial position effect of free recall"** — Cognitive basis for primacy/recency effects in sequential processing.
+
+---
+
+## Pending Lessons
+
+Lesson cards awaiting synthesis. Run Synthesis Protocol when 5+ cards accumulate. Use the template below
+
+
+---
+### LESSON CARD: [Short Title]
+**Source:** [Project/session where observed]
+**Date:** [YYYY-MM-DD]
+
+**Observation:** [What happened — specific, concrete]
+
+**Principle:** [The generalized rule]
+
+**Design Implication:** [How to apply when building prompts]
+
+**Related:** [Optional — existing case study this extends or contradicts]
+---
+
+---
+### LESSON CARD: Mutable State Consolidation
+**Source:** Japanese Coach project
+**Date:** 2025-01-15
+
+**Observation:** Learner proficiency was referenced in three places (intro, challenge calibration, feedback). When updating skill level, only one reference was changed, creating contradictory instructions.
+
+**Principle:** Mutable state should have a single source of truth. Scatter references create sync failures.
+
+**Design Implication:** Consolidate all references to changeable data (user level, preferences, context) into one clearly marked section. Other sections reference that section, never duplicate the value.
+
+**Related:** Extends "Separation of Concerns"
+---
+<!-- Append new lesson cards below this line -->
