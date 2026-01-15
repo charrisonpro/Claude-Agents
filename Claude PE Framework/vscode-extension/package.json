@@ -1,0 +1,75 @@
+{
+  "name": "claude-pe-agent",
+  "displayName": "Claude PE Framework Agent",
+  "description": "Chat interface for Claude PE Framework Agent",
+  "version": "0.1.0",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "claudePEAgent.openChat",
+        "title": "Open Claude PE Agent Chat"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "claude-pe-agent",
+          "title": "Claude PE Agent",
+          "icon": "$(comment-discussion)"
+        }
+      ]
+    },
+    "views": {
+      "claude-pe-agent": [
+        {
+          "type": "webview",
+          "id": "claudePEAgent.chatView",
+          "name": "Chat"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Claude PE Agent",
+      "properties": {
+        "claudePEAgent.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Anthropic API Key (or set ANTHROPIC_API_KEY env var)"
+        },
+        "claudePEAgent.model": {
+          "type": "string",
+          "default": "claude-opus-4-5-20251101",
+          "description": "Claude model to use"
+        },
+        "claudePEAgent.frameworkPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to PE Framework Files directory"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.52.0"
+  }
+}
