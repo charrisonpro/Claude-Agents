@@ -9,7 +9,7 @@ Strategic overview for the Claude Agents project.
 | Agent | Model | Role |
 |-------|-------|------|
 | Claude Code | Opus | Master implementation, file management, git |
-| Project Manager (PM) | Sonnet | Strategy, decisions, user sounding board |
+| Project Manager (PM) | Flexible | Strategy, decisions, user sounding board |
 | Prompt Engineer (PE) | Opus | Agent design, framework maintenance |
 | Project Coordinator (PC) | Haiku | Async queue processing, status tracking |
 
@@ -32,6 +32,9 @@ PC processes queue async ←── All agents write tasks
 2. Claude Code picks up designs, scaffolds agent folders
 3. PM coordinates priorities and decisions
 4. PC tracks status via queue
+
+### Development Principle
+**Build functions separately before integration.** Design and test new capabilities as standalone functions first, then integrate into agents once proven. This allows adaptation to other agents later.
 
 ---
 
@@ -64,6 +67,16 @@ Base prompts in `PE/Agent Files/Templates/Personality Stems/`:
 
 ---
 
+## Task Hierarchy (Speculative)
+
+| Model | Cognitive Style | Task Types |
+|-------|-----------------|------------|
+| Opus | Discover & Create | Novel design, complex reasoning, research synthesis |
+| Sonnet | Find & Explain | Pattern matching, clear explanation, moderate complexity |
+| Haiku | Go Get & Replace | Routine lookup, simple substitution, queue processing |
+
+---
+
 ## To Do
 
 | Task | Owner | Priority |
@@ -78,22 +91,26 @@ Base prompts in `PE/Agent Files/Templates/Personality Stems/`:
 - Tex/Lean Text Helper
 - Research Coordinator
 - Grader — evaluation framework management
+- Reading Notes Helper
 
 ### Assistants (Sonnet)
-- Personal Assistant — scheduling, reminders
+- Personal Assistant/Scheduler — scheduling, reminders, task management
 - Proof Assistant
+- Data Analyst
+- Scientific Literature Researcher
 
 ### Coaches (Sonnet/Opus)
 - Language Coach
   - Japanese (standard + Kyoto-ben)
-  - French (standard + eastern)
+  - French (standard + Quebec)
   - Finnish
   - Chinese (Cantonese)
-  - Spanish
-- Weightlifting Coach/Programmer
+  - Spanish (Costa Rican dialect) — **priority for deployment**
+- Weightlifting Programmer (Sonnet, may escalate to Opus)
 
 ### SMEs (Opus)
 - Research Assistant
+- SME Researcher
 - Copy Writer
 - Web Designer
 

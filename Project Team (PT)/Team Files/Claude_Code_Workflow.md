@@ -43,38 +43,51 @@ The Rust runtime loads the selected agent's `Agent Files/Instructions.md`.
 ## Directory Structure
 
 ```
-Project Team (PT)/
-├── Cargo.toml                  # Shared Rust project
-├── config.toml                 # API key, model defaults
-├── src/
-│   ├── main.rs                 # CLI: cargo run -- [agent]
-│   ├── agent.rs                # TUI and API logic
-│   └── toolkit.rs              # Tool implementations
+Claude-Agents/
+├── Project Team (PT)/
+│   ├── Cargo.toml                  # Shared Rust project
+│   ├── config.toml                 # API key, model defaults
+│   ├── src/
+│   │   ├── main.rs                 # CLI: cargo run -- [agent]
+│   │   ├── agent.rs                # TUI and API logic
+│   │   └── toolkit.rs              # Tool implementations
+│   │
+│   ├── Team Files/                 # Shared resources
+│   │   ├── Master_Plan.md
+│   │   ├── PM_Queue.md             # Task queue (PM triages)
+│   │   ├── Toolkit.md              # Tool documentation
+│   │   ├── Claude_Code_Workflow.md # This file
+│   │   └── Conversation_Log_Template.md
+│   │
+│   ├── Project Manager (PM)/
+│   │   ├── Agent Files/            # 7 standard files
+│   │   ├── History/
+│   │   └── Output/
+│   │
+│   ├── Prompt Engineer (PE)/
+│   │   ├── Agent Files/
+│   │   │   ├── Templates/          # Stems, functions, base tools
+│   │   │   └── Arch/               # Version archive
+│   │   ├── History/
+│   │   ├── Output/                 # Designs for Claude Code
+│   │   └── Archive/                # Processed Output files
+│   │
+│   └── Project Coordinator (PC)/
+│       ├── Agent Files/
+│       ├── History/
+│       └── Output/                 # Status reports
 │
-├── Team Files/                 # Shared resources
-│   ├── Master_Plan.md
-│   ├── PM_Queue.md             # Task queue (PM triages)
-│   ├── Toolkit.md              # Tool documentation
-│   ├── Claude_Code_Workflow.md # This file
-│   └── Project_History.md
-│
-├── Project Manager (PM)/
-│   ├── Agent Files/            # 7 standard files
-│   ├── History/
-│   └── Output/
-│
-├── Prompt Engineer (PE)/
-│   ├── Agent Files/
-│   │   ├── Templates/          # Stems, base tools
-│   │   └── Arch/               # Version archive
-│   ├── History/
-│   └── Output/                 # Designs for Claude Code
-│
-└── Project Coordinator (PC)/
-    ├── Agent Files/
-    ├── History/
-    └── Output/                 # Status reports
+└── Specialists/                    # All non-Project Team agents
+    ├── Spanish Coach (CR)/
+    │   └── Agent Files/            # Full 7-file structure
+    ├── Japanese Coach (Kyoto)/
+    │   └── Agent Files/
+    ├── French Coach (Quebec)/
+    │   └── Agent Files/
+    └── [Future specialists...]
 ```
+
+**Note:** All specialist agents (coaches, assistants, SMEs, helpers) live in `Specialists/`, not in Project Team.
 
 ---
 
@@ -123,7 +136,14 @@ PM reads queue, understands status, and:
 1. PE designs agent prompts
 2. PE deposits in `Output/` with implementation notes
 3. Claude Code picks up and implements
-4. Claude Code pushes to repo
+4. Claude Code moves processed files from `Output/` to `Archive/`
+5. Claude Code pushes to repo
+
+### Output → Archive Protocol
+Once Claude Code has processed a PE Output file:
+1. Verify implementation is complete
+2. Move file: `PE/Output/[file]` → `PE/Archive/[file]`
+3. Keep drafts in Output until finalized
 
 ### PC Token-Saving Tasks
 PC runs on Haiku to save tokens. Route these to PC:
@@ -211,9 +231,10 @@ PC runs on Haiku to save tokens. Route these to PC:
 ### Create New Agent
 1. PM determines need and priority
 2. PE designs prompt (deposits in Output/)
-3. Claude Code scaffolds folder structure
-4. Claude Code populates Agent Files
-5. Add to Master_Plan.md
+3. Claude Code scaffolds folder structure in `Specialists/`
+4. Claude Code populates Agent Files (including template support files)
+5. Claude Code moves processed Output to Archive
+6. Add to Master_Plan.md
 
 ### Update Existing Agent
 1. PM approves change

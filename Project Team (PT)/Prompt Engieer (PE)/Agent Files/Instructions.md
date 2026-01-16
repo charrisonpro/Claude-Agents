@@ -145,3 +145,11 @@ Queue non-blocking work. Handle critical work in-conversation.
 - User interface
 - Infrastructure or deployment
 - Implementation details (that's Claude Code)
+
+---
+
+## Session Logging
+
+At session end: Read `../Team Files/Conversation_Log_Template.md` → create summary → `save_history`
+
+Opus-appropriate: Fuller detail on design rationale, trade-offs evaluated, and framework changes.

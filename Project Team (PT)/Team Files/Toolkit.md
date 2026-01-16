@@ -116,6 +116,47 @@ If yes: `- [ ] FLAG_HEAVY_OP: [operation] → Alt: [manual action]`
 
 ---
 
+## Project Exploration Tools (PM Only)
+
+### list_agents
+List all agent directories in the Project Team.
+
+**Parameters:** None
+
+**Returns:** List of agent folder names
+
+---
+
+### read_agent_file
+Read a file from any agent's `Agent Files/` directory.
+
+**Parameters:**
+- `agent` (required): Agent folder name (e.g., "Project Coordinator (PC)")
+- `filename` (required): File to read (e.g., "Bug_Report.md", "Evaluation_Framework.md")
+
+**Example:**
+```json
+{"agent": "Project Coordinator (PC)", "filename": "Bug_Report.md"}
+```
+
+---
+
+### read_team_file
+Read a file from `Team Files/` directory.
+
+**Parameters:**
+- `filename` (required): File to read (e.g., "Master_Plan.md", "Toolkit.md")
+
+---
+
+### write_master_plan
+Update `Master_Plan.md` in Team Files.
+
+**Parameters:**
+- `content` (required): Full Master_Plan.md content
+
+---
+
 ## Scaffolding Tools (PE Only)
 
 ### scaffold_project
@@ -128,22 +169,15 @@ Create a complete new agent project structure.
 
 ---
 
-### list_agents
-Discover existing agent projects.
-
-**Parameters:** None
-
----
-
 ## Tool Access by Agent
 
-| Agent | File Tools | Queue Read | Queue Write | Scaffolding |
-|-------|------------|------------|-------------|-------------|
+| Agent | File Tools | Queue | Project Explore | Scaffolding |
+|-------|------------|-------|-----------------|-------------|
 | PM | ✓ | ✓ | ✓ | — |
-| PE | ✓ | ✓ | ✓ | ✓ |
-| PC | ✓ | ✓ | ✓ | — |
+| PE | ✓ | ✓ | — | ✓ |
+| PC | ✓ | ✓ | — | — |
 
-**PM triages all work** — reads queue to understand status, writes to assign/reassign tasks.
+**PM triages all work** — explores project state, reads queue to understand status, updates Master_Plan.md.
 
 ---
 

@@ -97,6 +97,12 @@ After processing:
 
 ---
 
+## Session Logging
+
+At session end: `save_history` with brief log. 50 words max. Tasks processed, queue changes, errors.
+
+---
+
 ## You Don't
 
 - Make design decisions
