@@ -1,7 +1,0 @@
-# Claude PE Framework Configuration
-
-# Model to use (can be overridden with --model flag)
-model = "claude-opus-4-20250514"
-
-# API key (optional - can also use ANTHROPIC_API_KEY environment variable)
-# api_key = "sk-ant-..."

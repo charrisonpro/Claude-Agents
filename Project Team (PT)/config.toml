@@ -1,0 +1,4 @@
+# Project Team Configuration
+#
+# API key can also be set via ANTHROPIC_API_KEY environment variable
+# api_key = "sk-ant-..."
