@@ -1,6 +1,88 @@
-# Japanese Coach (Kyoto-ben) — Evaluation Framework
+---
+# MACHINE-OWNED: Claudio reads/writes this block
+agent: Japanese_Coach_Kyoto
+version: v1.0
+last_updated: 2025-01-19
 
-Testing document for deployment validation.
+hypotheses:
+  - id: H1
+    condition: "learner level correctly assessed"
+    outcome: "learner progresses appropriately"
+    statement: "P(learner progresses | level correctly assessed) > 0.8"
+    status: untested
+    observation_count: 0
+    consistent_count: 0
+    inconsistent_count: 0
+    observations: []
+
+  - id: H2
+    condition: "dialect feature introduced"
+    outcome: "recognition prioritized over production"
+    statement: "P(recognition prioritized | dialect feature introduced) > 0.9"
+    status: untested
+    observation_count: 0
+    consistent_count: 0
+    inconsistent_count: 0
+    observations: []
+
+  - id: H3
+    condition: "dialect feature introduced"
+    outcome: "cultural context included"
+    statement: "P(cultural context included | dialect feature introduced) > 0.85"
+    status: untested
+    observation_count: 0
+    consistent_count: 0
+    inconsistent_count: 0
+    observations: []
+
+  - id: H4
+    condition: "trust behaviors present"
+    outcome: "learner continues engagement"
+    statement: "P(learner continues engagement | trust behaviors present) > 0.8"
+    status: untested
+    observation_count: 0
+    consistent_count: 0
+    inconsistent_count: 0
+    observations: []
+
+observations: []
+---
+
+# Evaluation Framework — Japanese Coach (Kyoto-ben)
+
+## Hypotheses
+
+### H1: Level Calibration → Progress
+
+**Statement:** P(learner progresses | level correctly assessed) > 0.8
+
+**Rationale:** Correct level assessment determines appropriate instruction depth. Kyoto-ben layered on insufficient standard Japanese foundation will fail.
+
+**Status:** Untested
+
+### H2: Dialect Introduction → Recognition Priority
+
+**Statement:** P(recognition prioritized | dialect feature introduced) > 0.9
+
+**Rationale:** Most learners need to understand Kyoto-ben, not speak it. Production is higher bar—don't push prematurely.
+
+**Status:** Untested
+
+### H3: Dialect Features → Cultural Context
+
+**Statement:** P(cultural context included | dialect feature introduced) > 0.85
+
+**Rationale:** Kyoto-ben carries centuries of cultural significance. Teaching forms without history/connotation misses the point.
+
+**Status:** Untested
+
+### H4: Trust Behaviors → Engagement
+
+**Statement:** P(learner continues engagement | trust behaviors present) > 0.8
+
+**Rationale:** Warmth predicts retention. Coach Stem trust behaviors should produce continued learner engagement.
+
+**Status:** Untested
 
 ---
 
@@ -34,11 +116,9 @@ Testing document for deployment validation.
 - Makes Kyoto-ben feel approachable, not intimidating
 - Offers practical recognition tips
 
-**Actual Behavior:**
+**Hypothesis Links:** H1 (level calibration), H2 (recognition priority), H4 (trust behaviors)
 
-**Result:** Pass / Fail / Partial
-
-**Notes:**
+**Task Type:** moderate
 
 ---
 
@@ -58,11 +138,9 @@ Testing document for deployment validation.
 - Provides usable pattern
 - Doesn't overcomplicate
 
-**Actual Behavior:**
+**Hypothesis Links:** H3 (cultural context with dialect feature)
 
-**Result:**
-
-**Notes:**
+**Task Type:** moderate
 
 ---
 
@@ -82,11 +160,9 @@ Testing document for deployment validation.
 - Provides useful cultural insight
 - Doesn't reinforce harmful stereotypes
 
-**Actual Behavior:**
+**Hypothesis Links:** H3 (cultural context)
 
-**Result:**
-
-**Notes:**
+**Task Type:** complex
 
 ---
 
@@ -106,11 +182,9 @@ Testing document for deployment validation.
 - Useful practice structure
 - Clear correction
 
-**Actual Behavior:**
+**Hypothesis Links:** H1 (level calibration), H2 (recognition vs production check)
 
-**Result:**
-
-**Notes:**
+**Task Type:** complex
 
 ---
 
@@ -129,11 +203,19 @@ Testing document for deployment validation.
 - Respectful of both varieties
 - Useful distinctions
 
-**Actual Behavior:**
+**Hypothesis Links:** H3 (cultural context)
 
-**Result:**
+**Task Type:** moderate
 
-**Notes:**
+---
+
+## Radiation Log
+
+Observations that should propagate to other components:
+
+| Date | Observation | Target | Status |
+|------|-------------|--------|--------|
+| | | | |
 
 ---
 
@@ -145,30 +227,13 @@ Testing document for deployment validation.
 
 ---
 
-## Radiation Notes
+## Notes
 
-### Propagate to Coach Stem
-
-Observations that apply to all coaches:
-
-- [Observation] → [Suggested change]
-
-### Propagate to Language Coach Extensions
-
-Observations for all language coaches:
-
-- [Observation] → [Suggested change]
-
-### Keep Local (Kyoto-Specific)
-
-Observations specific to Kyoto-ben:
-
-- [Observation] → [Why local]
+Space for PM synthesis, patterns observed, open questions.
 
 ---
 
-## Version Correlation
+## Version History
 
-| Eval Date | Agent Version | Notes |
-|-----------|---------------|-------|
-| | Japanese_Coach_Kyoto_v1.0 | Initial testing |
+**v0.1** — Initial test cases.
+**v0.2** — Upgraded to YAML format with hypotheses, observation tracking, hypothesis links on test cases.

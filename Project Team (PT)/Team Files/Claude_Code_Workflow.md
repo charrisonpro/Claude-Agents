@@ -247,3 +247,64 @@ PC runs on Haiku to save tokens. Route these to PC:
 ```markdown
 - [ ] TASK_TYPE: Description (owner: agent_name)
 ```
+
+---
+
+## Evaluation System
+
+### Overview
+
+Agents are evaluated through:
+1. **Evaluation_Framework.md** — Per-agent hypotheses and test cases
+2. **Interactions/** — Stored transcripts for review
+3. **Evaluator_Prompt.md** — Opus-level evaluation template
+4. **Global_Evaluation.md** — System-wide summary
+
+### Hypothesis Framework
+
+Each agent maintains up to 5 hypotheses in Evaluation_Framework.md YAML front matter:
+
+```yaml
+hypotheses:
+  - id: H1
+    condition: "trigger condition"
+    outcome: "expected result"
+    statement: "P(outcome | condition) > 0.8"
+    status: untested
+    observation_count: 0
+    consistent_count: 0
+    inconsistent_count: 0
+    observations: []
+```
+
+**Status transitions:**
+- `untested` → `testing`: First observation recorded
+- `testing` → `supported`: 5+ observations, >80% consistent
+- `testing` → `refuted`: 5+ observations, >40% inconsistent
+- Otherwise remains `testing` or becomes `inconclusive`
+
+### Evaluation Workflow
+
+1. **Record interaction** — Save transcript to `Agent Files/Interactions/`
+2. **Run evaluation** — Use Evaluator_Prompt.md with transcript
+3. **Log observation** — Update hypothesis observations in YAML
+4. **Check thresholds** — Update status if criteria met
+5. **Update Global_Evaluation.md** — Sync system-wide view
+
+### Files
+
+| File | Location | Purpose |
+|------|----------|---------|
+| `Evaluation_Framework.md` | Each agent's `Agent Files/` | Hypotheses, test cases, feedback |
+| `Interactions/` | Each agent's `Agent Files/` | Transcript storage |
+| `Evaluator_Prompt.md` | `Team Files/` | Opus evaluation template |
+| `Global_Evaluation.md` | `Team Files/` | System-wide summary |
+
+### External Tester Protocol
+
+For testers with GitHub access but not local runtime:
+1. Tester interacts with deployed agent
+2. Tester saves transcript to `Interactions/`
+3. Tester submits PR with transcript
+4. Claudio runs evaluation and updates YAML
+5. Results visible in Global_Evaluation.md

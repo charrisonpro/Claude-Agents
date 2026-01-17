@@ -1,6 +1,88 @@
-# Spanish Coach (Costa Rican) — Evaluation Framework
+---
+# MACHINE-OWNED: Claudio reads/writes this block
+agent: Spanish_Coach_CR
+version: v1.0
+last_updated: 2025-01-19
 
-*Testing document for Sunday deployment.*
+hypotheses:
+  - id: H1
+    condition: "learner level correctly assessed"
+    outcome: "learner progresses appropriately"
+    statement: "P(learner progresses | level correctly assessed) > 0.8"
+    status: untested
+    observation_count: 0
+    consistent_count: 0
+    inconsistent_count: 0
+    observations: []
+
+  - id: H2
+    condition: "error detected"
+    outcome: "error addressed effectively"
+    statement: "P(error addressed effectively | error detected) > 0.9"
+    status: untested
+    observation_count: 0
+    consistent_count: 0
+    inconsistent_count: 0
+    observations: []
+
+  - id: H3
+    condition: "dialect feature introduced"
+    outcome: "cultural context included"
+    statement: "P(cultural context included | dialect feature introduced) > 0.85"
+    status: untested
+    observation_count: 0
+    consistent_count: 0
+    inconsistent_count: 0
+    observations: []
+
+  - id: H4
+    condition: "trust behaviors present"
+    outcome: "learner continues engagement"
+    statement: "P(learner continues engagement | trust behaviors present) > 0.8"
+    status: untested
+    observation_count: 0
+    consistent_count: 0
+    inconsistent_count: 0
+    observations: []
+
+observations: []
+---
+
+# Evaluation Framework — Spanish Coach (Costa Rican)
+
+## Hypotheses
+
+### H1: Level Calibration → Progress
+
+**Statement:** P(learner progresses | level correctly assessed) > 0.8
+
+**Rationale:** Correct level assessment is prerequisite for appropriate instruction. If we misjudge level, instruction won't land.
+
+**Status:** Untested
+
+### H2: Error Detection → Effective Correction
+
+**Statement:** P(error addressed effectively | error detected) > 0.9
+
+**Rationale:** Detecting errors without correcting them is useless. Correction must be effective (clear, gentle, retained).
+
+**Status:** Untested
+
+### H3: Dialect Features → Cultural Context
+
+**Statement:** P(cultural context included | dialect feature introduced) > 0.85
+
+**Rationale:** Language without culture is skeleton. When teaching tico expressions, cultural weight must accompany.
+
+**Status:** Untested
+
+### H4: Trust Behaviors → Engagement
+
+**Statement:** P(learner continues engagement | trust behaviors present) > 0.8
+
+**Rationale:** Warmth predicts retention. Coach Stem trust behaviors should produce continued learner engagement.
+
+**Status:** Untested
 
 ---
 
@@ -34,11 +116,9 @@
 - Makes learner feel welcome, not intimidated
 - Asks about their goals/motivation
 
-**Actual Behavior:** [Fill during testing]
+**Hypothesis Links:** H1 (level calibration), H4 (trust behaviors)
 
-**Result:** Pass / Fail / Partial
-
-**Notes:**
+**Task Type:** moderate
 
 ---
 
@@ -58,11 +138,9 @@
 - Doesn't dismiss tú as "wrong"
 - Provides practical guidance on when to use which
 
-**Actual Behavior:**
+**Hypothesis Links:** H3 (cultural context with dialect feature)
 
-**Result:**
-
-**Notes:**
+**Task Type:** moderate
 
 ---
 
@@ -82,11 +160,9 @@
 - Handles it with appropriate delicacy
 - Teaches the correct form clearly
 
-**Actual Behavior:**
+**Hypothesis Links:** H2 (error correction), H4 (trust behaviors)
 
-**Result:**
-
-**Notes:**
+**Task Type:** moderate
 
 ---
 
@@ -106,11 +182,9 @@
 - Conveys cultural significance
 - Provides practical usage examples
 
-**Actual Behavior:**
+**Hypothesis Links:** H3 (cultural context)
 
-**Result:**
-
-**Notes:**
+**Task Type:** moderate
 
 ---
 
@@ -131,11 +205,9 @@
 - Uses CR Spanish authentically
 - Supports learner without taking over
 
-**Actual Behavior:**
+**Hypothesis Links:** H1 (level calibration), H3 (dialect authenticity)
 
-**Result:**
-
-**Notes:**
+**Task Type:** complex
 
 ---
 
@@ -155,11 +227,19 @@
 - Validates existing passive knowledge
 - Adjusts pedagogy appropriately
 
-**Actual Behavior:**
+**Hypothesis Links:** H1 (level calibration), H4 (trust behaviors)
 
-**Result:**
+**Task Type:** complex
 
-**Notes:**
+---
+
+## Radiation Log
+
+Observations that should propagate to other components:
+
+| Date | Observation | Target | Status |
+|------|-------------|--------|--------|
+| | | | |
 
 ---
 
@@ -171,24 +251,13 @@
 
 ---
 
-## Radiation Notes
+## Notes
 
-### Propagate to Coach Stem
-
-Observations that apply to all coaches:
-
-- [Observation] → [Suggested change]
-
-### Keep Local (CR-Specific)
-
-Observations specific to Costa Rican Spanish:
-
-- [Observation] → [Why local]
+Space for PM synthesis, patterns observed, open questions.
 
 ---
 
-## Version Correlation
+## Version History
 
-| Eval Date | Agent Version | Notes |
-|-----------|---------------|-------|
-| | Spanish_Coach_CR_v1.0 | Initial deployment testing |
+**v0.1** — Initial test cases for deployment.
+**v0.2** — Upgraded to YAML format with hypotheses, observation tracking, hypothesis links on test cases.

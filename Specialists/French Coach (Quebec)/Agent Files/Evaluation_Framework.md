@@ -1,6 +1,88 @@
-# French Coach (Québécois) — Evaluation Framework
+---
+# MACHINE-OWNED: Claudio reads/writes this block
+agent: French_Coach_Quebec
+version: v1.0
+last_updated: 2025-01-19
 
-Testing document for deployment validation.
+hypotheses:
+  - id: H1
+    condition: "learner level correctly assessed"
+    outcome: "learner progresses appropriately"
+    statement: "P(learner progresses | level correctly assessed) > 0.8"
+    status: untested
+    observation_count: 0
+    consistent_count: 0
+    inconsistent_count: 0
+    observations: []
+
+  - id: H2
+    condition: "comprehension frustration expressed"
+    outcome: "ear training prioritized"
+    statement: "P(ear training prioritized | comprehension frustration expressed) > 0.9"
+    status: untested
+    observation_count: 0
+    consistent_count: 0
+    inconsistent_count: 0
+    observations: []
+
+  - id: H3
+    condition: "dialect feature introduced"
+    outcome: "cultural context included"
+    statement: "P(cultural context included | dialect feature introduced) > 0.85"
+    status: untested
+    observation_count: 0
+    consistent_count: 0
+    inconsistent_count: 0
+    observations: []
+
+  - id: H4
+    condition: "trust behaviors present"
+    outcome: "learner continues engagement"
+    statement: "P(learner continues engagement | trust behaviors present) > 0.8"
+    status: untested
+    observation_count: 0
+    consistent_count: 0
+    inconsistent_count: 0
+    observations: []
+
+observations: []
+---
+
+# Evaluation Framework — French Coach (Québécois)
+
+## Hypotheses
+
+### H1: Level Calibration → Progress
+
+**Statement:** P(learner progresses | level correctly assessed) > 0.8
+
+**Rationale:** Correct level assessment is prerequisite for appropriate instruction. QC French requires solid standard French foundation first.
+
+**Status:** Untested
+
+### H2: Comprehension Frustration → Ear Training
+
+**Statement:** P(ear training prioritized | comprehension frustration expressed) > 0.9
+
+**Rationale:** Most learners struggle with spoken QC comprehension. When frustration emerges, pivot to systematic ear training rather than more vocabulary.
+
+**Status:** Untested
+
+### H3: Dialect Features → Cultural Context
+
+**Statement:** P(cultural context included | dialect feature introduced) > 0.85
+
+**Rationale:** QC French carries identity weight. Teaching forms without acknowledging linguistic legitimacy and cultural significance misses the point.
+
+**Status:** Untested
+
+### H4: Trust Behaviors → Engagement
+
+**Statement:** P(learner continues engagement | trust behaviors present) > 0.8
+
+**Rationale:** Warmth predicts retention. Coach Stem trust behaviors should produce continued learner engagement.
+
+**Status:** Untested
 
 ---
 
@@ -34,11 +116,9 @@ Testing document for deployment validation.
 - Provides actionable explanation
 - Offers concrete next step
 
-**Actual Behavior:**
+**Hypothesis Links:** H1 (level calibration), H2 (ear training priority), H4 (trust behaviors)
 
-**Result:** Pass / Fail / Partial
-
-**Notes:**
+**Task Type:** moderate
 
 ---
 
@@ -57,11 +137,9 @@ Testing document for deployment validation.
 - Useful examples
 - Cultural context
 
-**Actual Behavior:**
+**Hypothesis Links:** H3 (cultural context with dialect feature)
 
-**Result:**
-
-**Notes:**
+**Task Type:** moderate
 
 ---
 
@@ -81,11 +159,9 @@ Testing document for deployment validation.
 - Doesn't create conflict with learner's teacher
 - Provides accurate framing
 
-**Actual Behavior:**
+**Hypothesis Links:** H3 (cultural context), H4 (trust behaviors)
 
-**Result:**
-
-**Notes:**
+**Task Type:** complex
 
 ---
 
@@ -105,11 +181,9 @@ Testing document for deployment validation.
 - Doesn't encourage inappropriate use
 - Provides useful framework
 
-**Actual Behavior:**
+**Hypothesis Links:** H3 (cultural context)
 
-**Result:**
-
-**Notes:**
+**Task Type:** complex
 
 ---
 
@@ -129,11 +203,19 @@ Testing document for deployment validation.
 - Clear explanation of patterns
 - Practical exercises
 
-**Actual Behavior:**
+**Hypothesis Links:** H1 (level calibration), H2 (ear training priority)
 
-**Result:**
+**Task Type:** moderate
 
-**Notes:**
+---
+
+## Radiation Log
+
+Observations that should propagate to other components:
+
+| Date | Observation | Target | Status |
+|------|-------------|--------|--------|
+| | | | |
 
 ---
 
@@ -145,30 +227,13 @@ Testing document for deployment validation.
 
 ---
 
-## Radiation Notes
+## Notes
 
-### Propagate to Coach Stem
-
-Observations that apply to all coaches:
-
-- [Observation] → [Suggested change]
-
-### Propagate to Language Coach Extensions
-
-Observations for all language coaches:
-
-- [Observation] → [Suggested change]
-
-### Keep Local (QC-Specific)
-
-Observations specific to Québécois:
-
-- [Observation] → [Why local]
+Space for PM synthesis, patterns observed, open questions.
 
 ---
 
-## Version Correlation
+## Version History
 
-| Eval Date | Agent Version | Notes |
-|-----------|---------------|-------|
-| | French_Coach_Quebec_v1.0 | Initial testing |
+**v0.1** — Initial test cases for deployment.
+**v0.2** — Upgraded to YAML format with hypotheses, observation tracking, hypothesis links on test cases.

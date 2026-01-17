@@ -80,6 +80,32 @@ Reusable modules in `PE/Agent Files/Templates/Functions/`:
 
 ---
 
+## Coach Templates
+
+Templates for language coach operations in `PE/Agent Files/Templates/`:
+
+| Template | Purpose |
+|----------|---------|
+| Coach_Conversation_Log_Template.md | Session logging for coaching interactions |
+| Coach_Student_Status_Template.md | Tracking individual student progress |
+
+---
+
+## Evaluation System
+
+Bayesian hypothesis framework for agent assessment:
+
+| Component | Location | Purpose |
+|-----------|----------|---------|
+| Evaluation_Framework.md | Each agent's `Agent Files/` | YAML hypotheses + test cases |
+| Interactions/ | Each agent's `Agent Files/` | Transcript storage |
+| Evaluator_Prompt.md | Team Files/ | Opus evaluation template |
+| Global_Evaluation.md | Team Files/ | System-wide summary |
+
+**Hypothesis status flow:** untested → testing (1+ obs) → supported (5+ obs, >80% consistent) or refuted (5+ obs, >40% inconsistent)
+
+---
+
 ## Task Hierarchy (Speculative)
 
 | Model | Cognitive Style | Task Types |
@@ -173,3 +199,5 @@ Claude-Agents/
 - [PM_Queue.md](PM_Queue.md) — Async task queue
 - [Project_History.md](Project_History.md) — Major milestones
 - [Conversation_Log_Template.md](Conversation_Log_Template.md) — Session logging format
+- [Evaluator_Prompt.md](Evaluator_Prompt.md) — Interaction evaluation template
+- [Global_Evaluation.md](Global_Evaluation.md) — System-wide evaluation summary
