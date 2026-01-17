@@ -22,16 +22,17 @@ User ←→ PM (strategy) ←→ PE (design) → Output/
                                            ↓
                                     Claude Code (implement)
                                            ↓
-                                      Local repo → GitHub
+                                    Specialists/ → GitHub
 
 PC processes queue async ←── All agents write tasks
 ```
 
 ### Design → Implementation
 1. PE designs agent prompts, deposits in `PE/Output/`
-2. Claude Code picks up designs, scaffolds agent folders
-3. PM coordinates priorities and decisions
-4. PC tracks status via queue
+2. Claude Code picks up designs, scaffolds agent folders in `Specialists/`
+3. Claude Code moves processed Output files to `PE/Archive/`
+4. PM coordinates priorities and decisions
+5. PC tracks status via queue
 
 ### Development Principle
 **Build functions separately before integration.** Design and test new capabilities as standalone functions first, then integrate into agents once proven. This allows adaptation to other agents later.
@@ -62,8 +63,20 @@ Base prompts in `PE/Agent Files/Templates/Personality Stems/`:
 |------|-------|----------|
 | Helper | Haiku | Constrained tasks, queue processing |
 | Assistant | Sonnet | General purpose, scheduling |
-| Coach | Sonnet/Opus | Teaching, feedback, motivation |
+| Coach (v1.2) | Sonnet/Opus | Teaching, feedback, motivation |
 | SME | Opus | Deep expertise, research |
+
+---
+
+## Functions
+
+Reusable modules in `PE/Agent Files/Templates/Functions/`:
+
+| Function | Version | Purpose |
+|----------|---------|---------|
+| Interview Function | v0.2 | Structured info gathering when context insufficient |
+| Lazy File Loading | v0.1 | Load support files on demand, not at startup |
+| Language Coach Interview Extensions | v1.0 | Domain-specific interview patterns for language coaches |
 
 ---
 
@@ -81,7 +94,25 @@ Base prompts in `PE/Agent Files/Templates/Personality Stems/`:
 
 | Task | Owner | Priority |
 |------|-------|----------|
-| | | |
+| Deployment guide for local Rust setup with GitHub | Claude Code | Medium |
+| Test Spanish Coach with external tester | Designer | P0 |
+| Test Japanese and French Coaches | Designer | P1 |
+| Decide: Interview function in Instructions.md or Conventions.md? | PM | Medium |
+| Prepare documentation for instruction pattern testing | PE | Medium |
+| Refine Weightlifting Programmer from draft | PE | Low |
+| Refine Personal Assistant from draft | PE | Low |
+
+---
+
+## Deployed Specialists
+
+Agents in `Specialists/` with full 7-file structure:
+
+| Agent | Model | Status |
+|-------|-------|--------|
+| Spanish Coach (CR) | Sonnet | Ready for testing |
+| Japanese Coach (Kyoto) | Sonnet | Ready for testing |
+| French Coach (Quebec) | Sonnet | Ready for testing |
 
 ---
 
@@ -94,19 +125,16 @@ Base prompts in `PE/Agent Files/Templates/Personality Stems/`:
 - Reading Notes Helper
 
 ### Assistants (Sonnet)
-- Personal Assistant/Scheduler — scheduling, reminders, task management
+- Personal Assistant/Scheduler — draft in PE Output
 - Proof Assistant
 - Data Analyst
 - Scientific Literature Researcher
 
 ### Coaches (Sonnet/Opus)
-- Language Coach
-  - Japanese (standard + Kyoto-ben)
-  - French (standard + Quebec)
+- Language Coach (additional dialects)
   - Finnish
   - Chinese (Cantonese)
-  - Spanish (Costa Rican dialect) — **priority for deployment**
-- Weightlifting Programmer (Sonnet, may escalate to Opus)
+- Weightlifting Programmer — draft in PE Output (Sonnet, may escalate to Opus)
 
 ### SMEs (Opus)
 - Research Assistant
@@ -116,8 +144,32 @@ Base prompts in `PE/Agent Files/Templates/Personality Stems/`:
 
 ---
 
+## Directory Structure
+
+```
+Claude-Agents/
+├── Project Team (PT)/          # Development infrastructure
+│   ├── src/                    # Rust CLI
+│   ├── Team Files/             # Shared docs (this file, queue, workflow)
+│   ├── Project Manager (PM)/
+│   ├── Prompt Engineer (PE)/
+│   │   ├── Agent Files/
+│   │   │   └── Templates/      # Stems, Functions
+│   │   ├── Output/             # Active designs
+│   │   └── Archive/            # Processed designs
+│   └── Project Coordinator (PC)/
+│
+└── Specialists/                # Deployed agents
+    ├── Spanish Coach (CR)/
+    ├── Japanese Coach (Kyoto)/
+    └── French Coach (Quebec)/
+```
+
+---
+
 ## Reference
 
 - [Claude_Code_Workflow.md](Claude_Code_Workflow.md) — Claude Code operating procedures
 - [PM_Queue.md](PM_Queue.md) — Async task queue
 - [Project_History.md](Project_History.md) — Major milestones
+- [Conversation_Log_Template.md](Conversation_Log_Template.md) — Session logging format

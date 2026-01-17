@@ -1,6 +1,38 @@
 # Project History
 This will record the history of agent project over all.
 
+## 2025-01-19 — Language Coach Deployment & Directory Restructure
+
+### First Specialist Agents Deployed
+Three language coaches moved from design to deployment in `Specialists/`:
+- **Spanish Coach (Costa Rican)** — Full 7-file structure, evaluation framework, ready for external testing
+- **Japanese Coach (Kyoto-ben)** — Full 7-file structure, recognition-first approach
+- **French Coach (Québécois)** — Full 7-file structure, ear-training focus
+
+All coaches extend Coach Stem v1.2 and implement Language Coach Interview Extensions v1.0.
+
+### Directory Structure Formalized
+- **Specialists/** folder established for all non-Project Team agents
+- **PE/Archive/** created for processed Output files
+- Output → Archive protocol documented in Claude_Code_Workflow.md
+
+### Templates/Functions Established
+New function modules distributed to `PE/Agent Files/Templates/Functions/`:
+- Interview Function v0.2
+- Lazy File Loading v0.1
+- Language Coach Interview Extensions v1.0
+
+### Infrastructure Updates
+- PM Instructions updated with project exploration tools (list_agents, read_agent_file, read_team_file, write_master_plan)
+- Toolkit.md updated with project exploration documentation
+- Session logging added to all agent Instructions with model-appropriate guidance
+- Conversation_Log_Template.md created in Team Files
+
+### PM Kernel
+PM Kernel v0.1 added to PM Agent Files — dual-mode operation (Opus planning / Sonnet interactive) with priority stack framework.
+
+---
+
 ## 2025-01-16 — Agent Expansion & Modular Design Framework
 
 ### New Design Principle
