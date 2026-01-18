@@ -1,6 +1,77 @@
 # Project History
 This will record the history of agent project over all.
 
+## 2025-01-20 — Language Lab Launch & AWS Migration Planning
+
+### Language Lab Website Deployed
+Full browser-based Language Lab launched with all three coaches:
+- **Portfolio site** at charrisonpro.github.io/Claude-Agents
+- **Spanish Coach (CR)** — Full chat interface with session logging
+- **Japanese Coach (Kyoto)** — Full chat interface with session logging
+- **French Coach (Quebec)** — Full chat interface with session logging
+
+### Technical Implementation
+- Static site served from `/docs` folder via GitHub Pages
+- Chat interfaces connect to Anthropic API (user-provided keys initially)
+- Session data stored in browser localStorage
+- Export functionality for evaluation (markdown format)
+- Docker setup for local preview
+
+### Documentation Created
+- **GUIDES.md** — Architecture overview, updating coaches, data collection, tester instructions
+- **DEPLOY.md** — GitHub Pages deployment guide
+- **AWS_MIGRATION_GUIDE.md** — Cloud infrastructure migration plan
+
+### Critical Issues Identified (Testing Observations)
+
+**1. Interview Verbosity Problem**
+- Coaches present walls of questions instead of guided discovery
+- Fix required: Redesign interview function with discovery methodology
+- Owner: PE
+
+**2. Dialect Support Infrastructure Missing**
+- No external dialect resources integrated
+- Need: Behavior to interact with videos, text, interactive materials
+- Need: Reorganize prompts — standard language primary, dialect secondary
+
+**3. Outside Lesson Absorption Function Needed**
+- Use cases: Daily Duolingo recap, external class integration
+- Design needed for extracting grammar/vocab from external learning
+
+**4. Vocal/Audio Coaching**
+- Text-only insufficient for pronunciation work
+- Research needed for voice capability
+
+### AWS Cloud Migration Planned
+Target: Wednesday 2025-01-22
+
+Architecture:
+- EC2 Linux server (t3.small)
+- Nginx + Node.js API proxy
+- S3 for session storage
+- Server-side API key (no user keys needed)
+- Terminal-based Claude Code interaction
+
+### Agent Deployment Targets (by Wednesday)
+1. Personal Assistant/Scheduler (Sonnet) — draft exists
+2. Reading Notes Helper (Haiku) — to design
+3. Weightlifting Programmer (Sonnet) — draft exists
+
+### New Prospective Agents
+- **Webmaster** (SME) — design/deploy websites
+- **Web Designer** (SME) — UI/UX for browser interfaces
+
+### Domain Knowledge Integration Project
+Priority agents for curated background material:
+- PM: Project management, Agile/Scrum frameworks
+- PE: Prompt engineering research, instruction design
+- Language Coaches: Standard materials + dialect resources
+- Weightlifting Programmer: Reactive training methodology
+
+Timeline: Researcher support expected February 2025
+
+---
+
 ## 2025-01-19 (Evening) — Evaluation System Implementation
 
 ### Evaluation Framework Deployed

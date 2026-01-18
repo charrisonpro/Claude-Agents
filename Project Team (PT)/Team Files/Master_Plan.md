@@ -8,10 +8,47 @@ Strategic overview for the Claude Agents project.
 
 | Agent | Model | Role |
 |-------|-------|------|
-| Claude Code | Opus | Master implementation, file management, git |
+| Claude Code (Claudio) | Opus | Master implementation, file management, git |
 | Project Manager (PM) | Flexible | Strategy, decisions, user sounding board |
 | Prompt Engineer (PE) | Opus | Agent design, framework maintenance |
 | Project Coordinator (PC) | Haiku | Async queue processing, status tracking |
+
+---
+
+## Current Sprint: 2025-01-20 → 2025-01-22
+
+### Critical Path
+1. Fix interview verbosity (all coaches) — discovery interview methodology
+2. Deploy PA, Reading Notes, Weightlifter by Wednesday
+3. Integrate PM/PE domain knowledge
+4. AWS cloud migration for durable deployment
+5. Design Webmaster/Web Designer for deployment support
+
+### Deployment Targets (by Wednesday 2025-01-22)
+| Agent | Status | Owner |
+|-------|--------|-------|
+| Personal Assistant/Scheduler | Draft exists | PE → Claude Code |
+| Reading Notes Helper | To design | PE → Claude Code |
+| Weightlifting Programmer | Draft exists | PE → Claude Code |
+
+---
+
+## Infrastructure
+
+### Current: GitHub Pages
+- Static hosting at charrisonpro.github.io/Claude-Agents
+- Language Lab with 3 coaches (Spanish, Japanese, French)
+- localStorage for session data
+- User-provided API keys
+
+### Target: AWS Cloud (by Wednesday)
+- EC2 Linux server
+- Server-side API proxy (centralized API key)
+- S3 for session storage
+- Terminal-based Claude Code interaction
+- Full evaluation system implementation
+
+See: [AWS_MIGRATION_GUIDE.md](../../docs/AWS_MIGRATION_GUIDE.md)
 
 ---
 
@@ -22,9 +59,7 @@ User ←→ PM (strategy) ←→ PE (design) → Output/
                                            ↓
                                     Claude Code (implement)
                                            ↓
-                                    Specialists/ → GitHub
-
-PC processes queue async ←── All agents write tasks
+                                    Specialists/ → GitHub → AWS
 ```
 
 ### Design → Implementation
@@ -35,7 +70,7 @@ PC processes queue async ←── All agents write tasks
 5. PC tracks status via queue
 
 ### Development Principle
-**Build functions separately before integration.** Design and test new capabilities as standalone functions first, then integrate into agents once proven. This allows adaptation to other agents later.
+**Build functions separately before integration.** Design and test new capabilities as standalone functions first, then integrate into agents once proven.
 
 ---
 
@@ -72,11 +107,12 @@ Base prompts in `PE/Agent Files/Templates/Personality Stems/`:
 
 Reusable modules in `PE/Agent Files/Templates/Functions/`:
 
-| Function | Version | Purpose |
-|----------|---------|---------|
-| Interview Function | v0.2 | Structured info gathering when context insufficient |
-| Lazy File Loading | v0.1 | Load support files on demand, not at startup |
-| Language Coach Interview Extensions | v1.0 | Domain-specific interview patterns for language coaches |
+| Function | Version | Status | Purpose |
+|----------|---------|--------|---------|
+| Interview Function | v0.2 | **NEEDS REVISION** | Structured info gathering — requires discovery interview methodology |
+| Lazy File Loading | v0.1 | Active | Load support files on demand |
+| Language Coach Interview Extensions | v1.0 | **NEEDS REVISION** | Domain-specific interview — too verbose |
+| Outside Lesson Absorption | Planned | Design needed | Extract grammar/vocab from external learning |
 
 ---
 
@@ -106,7 +142,7 @@ Bayesian hypothesis framework for agent assessment:
 
 ---
 
-## Task Hierarchy (Speculative)
+## Task Hierarchy
 
 | Model | Cognitive Style | Task Types |
 |-------|-----------------|------------|
@@ -116,17 +152,53 @@ Bayesian hypothesis framework for agent assessment:
 
 ---
 
-## To Do
+## Critical Issues (from 2025-01-19 Testing)
 
-| Task | Owner | Priority |
-|------|-------|----------|
-| Deployment guide for local Rust setup with GitHub | Claude Code | Medium |
-| Test Spanish Coach with external tester | Designer | P0 |
-| Test Japanese and French Coaches | Designer | P1 |
-| Decide: Interview function in Instructions.md or Conventions.md? | PM | Medium |
-| Prepare documentation for instruction pattern testing | PE | Medium |
-| Refine Weightlifting Programmer from draft | PE | Low |
-| Refine Personal Assistant from draft | PE | Low |
+### 1. Interview Verbosity
+- **Problem:** Wall of questions instead of guided discovery
+- **Fix:** Redesign interview function with discovery methodology, sequential questions, slower trust-building
+- **Owner:** PE
+
+### 2. Dialect Support Infrastructure
+- **Problem:** No external dialect resources integrated
+- **Fix:** Locate/catalog resources, design resource interaction behavior, reorganize prompt structure
+- **Owner:** Designer + PE
+
+### 3. Vocal/Audio Coaching
+- **Problem:** Text-only insufficient for pronunciation work
+- **Fix:** Research and implement voice capability
+- **Owner:** Designer + Claude Code
+
+---
+
+## To Do (Priority Order)
+
+### P0 — This Week
+| Task | Owner | Due |
+|------|-------|-----|
+| Redesign interview function — discovery methodology | PE | ASAP |
+| Finalize Personal Assistant design | PE | Tue |
+| Design Reading Notes Helper | PE | Tue |
+| Finalize Weightlifting Programmer | PE | Tue |
+| Deploy PA, Reading Notes, Weightlifter | Claude Code | Wed |
+| AWS EC2 setup and migration | Designer + Claude Code | Wed |
+
+### P1 — Next
+| Task | Owner |
+|------|-------|
+| Design Webmaster specialist agent | PE |
+| Design Web Designer specialist agent | PE |
+| Design "absorb outside lesson" function | PE |
+| Locate dialect support resources (videos, text) | Designer |
+| Research vocal coaching capability | Designer |
+
+### P2 — Ongoing
+| Task | Owner |
+|------|-------|
+| Integrate PM domain knowledge (agile, project mgmt) | Designer |
+| Integrate PE domain knowledge (prompt eng research) | Designer |
+| Gather language learning materials per coach | Designer |
+| Locate reactive training material for Weightlifter | Designer |
 
 ---
 
@@ -134,39 +206,55 @@ Bayesian hypothesis framework for agent assessment:
 
 Agents in `Specialists/` with full 7-file structure:
 
-| Agent | Model | Status |
-|-------|-------|--------|
-| Spanish Coach (CR) | Sonnet | Ready for testing |
-| Japanese Coach (Kyoto) | Sonnet | Ready for testing |
-| French Coach (Quebec) | Sonnet | Ready for testing |
+| Agent | Model | Status | Web |
+|-------|-------|--------|-----|
+| Spanish Coach (CR) | Sonnet | Active | ✓ |
+| Japanese Coach (Kyoto) | Sonnet | Active | ✓ |
+| French Coach (Quebec) | Sonnet | Active | ✓ |
 
 ---
 
 ## Prospective Agents
 
+### Deploy by Wednesday
+- **Personal Assistant/Scheduler** (Sonnet) — draft exists
+- **Reading Notes Helper** (Haiku) — to design
+- **Weightlifting Programmer** (Sonnet) — draft exists
+
 ### Helpers (Haiku)
 - Tex/Lean Text Helper
 - Research Coordinator
 - Grader — evaluation framework management
-- Reading Notes Helper
 
 ### Assistants (Sonnet)
-- Personal Assistant/Scheduler — draft in PE Output
 - Proof Assistant
 - Data Analyst
 - Scientific Literature Researcher
 
 ### Coaches (Sonnet/Opus)
-- Language Coach (additional dialects)
-  - Finnish
-  - Chinese (Cantonese)
-- Weightlifting Programmer — draft in PE Output (Sonnet, may escalate to Opus)
+- Language Coach (additional dialects): Finnish, Chinese (Cantonese)
 
 ### SMEs (Opus)
 - Research Assistant
 - SME Researcher
 - Copy Writer
-- Web Designer
+- **Webmaster** — design/deploy websites (NEW)
+- **Web Designer** — UI/UX for browser interfaces (NEW)
+
+---
+
+## Domain Knowledge Integration
+
+Priority agents needing curated background material:
+
+| Agent | Materials Needed | Status |
+|-------|------------------|--------|
+| PM | Project mgmt, Agile/Scrum, decision frameworks | To gather |
+| PE | Prompt engineering research, instruction design | To gather |
+| Language Coaches | Standard lang materials + dialect resources | To gather |
+| Weightlifting Programmer | Reactive training, programming methodology | To gather |
+
+**Timeline:** Researcher support expected February 2025
 
 ---
 
@@ -174,9 +262,16 @@ Agents in `Specialists/` with full 7-file structure:
 
 ```
 Claude-Agents/
+├── docs/                       # GitHub Pages / AWS static site
+│   ├── coach/                  # Language Lab interfaces
+│   ├── assets/                 # CSS, JS
+│   ├── GUIDES.md               # Operational guides
+│   ├── DEPLOY.md               # GitHub Pages deployment
+│   └── AWS_MIGRATION_GUIDE.md  # AWS setup guide
+│
 ├── Project Team (PT)/          # Development infrastructure
 │   ├── src/                    # Rust CLI
-│   ├── Team Files/             # Shared docs (this file, queue, workflow)
+│   ├── Team Files/             # Shared docs
 │   ├── Project Manager (PM)/
 │   ├── Prompt Engineer (PE)/
 │   │   ├── Agent Files/
@@ -201,3 +296,5 @@ Claude-Agents/
 - [Conversation_Log_Template.md](Conversation_Log_Template.md) — Session logging format
 - [Evaluator_Prompt.md](Evaluator_Prompt.md) — Interaction evaluation template
 - [Global_Evaluation.md](Global_Evaluation.md) — System-wide evaluation summary
+- [AWS_MIGRATION_GUIDE.md](../../docs/AWS_MIGRATION_GUIDE.md) — Cloud deployment guide
+- [GUIDES.md](../../docs/GUIDES.md) — Language Lab operational guides
