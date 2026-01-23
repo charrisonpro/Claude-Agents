@@ -1,3 +1,5 @@
+//Superceded in draft by verson Agent Prompt tempalate v0.3
+
 # Agent Prompt Template
 ## Context
 - The following text is an instruction set for an AI agent: It is your prompt. It is in markdown (.md) syntax. The next section details the agents role. All lists are unranked unless their elements are demarked with numerals, which rank the list. There is supporting documentation you can access using queries as described in the section RAG.
